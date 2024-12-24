@@ -11,6 +11,7 @@
 - [Examples](#examples)
 - [New Features](#new-features)
 - [Known Bugs](#known-bugs)
+- [License & Disclaimer](#license--disclaimer)
 
 ## Installation
 
@@ -97,3 +98,19 @@ These issues are caused by the following code (using `easier_sop.cls` as an exam
 ```
 
 If you have any potential solutions, please feel free to open a pull request and contact me. Thank you!
+
+## License & Disclaimer
+
+### License
+
+This project is licensed under the [**BSD-3-Clause License**](https://opensource.org/license/BSD-3-clause). Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+### Disclaimer
+
+This project is intended for educational purposes only. The use of characters such as SpongeBob SquarePants and Mr. Krabs in examples is for parody and illustrative purposes only. This work is not affiliated with or endorsed by ViacomCBS (now Paramount Global) or any official creators of the SpongeBob SquarePants franchise. No commercial use or profit is derived from this project.
