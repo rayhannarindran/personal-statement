@@ -1,0 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SPDX-License-Identifier: BSD-3-Clause
+% Copyright (c) 2020, Salman Ahmad Faris
+% https://github.com/salfaris/EasyPS
+% Copyright (c) 2024, Daize Dong
+% https://github.com/DaizeDong/Easier-PS-and-SoP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{easier_ps}
+
+% University of Bikini Bottom
+\SetStudentName{SpongeBob SquarePants}
+\SetProgramName{PhD Program in Cooking}
+\SetUniversityName{University of Bikini Bottom}
+\SetUniversityAbbr{UoBB}
+\SetBaseContentPath{content/example_base}
+\SetUniContentPath{content/example_uni}
+
+% CONTENT
+\begin{document}
+\thispagestyle{firstpageheader} % Use expanded header on the first page
+\input{\GetBaseContentPath}
+\input{\GetUniContentPath}
+\end{document}

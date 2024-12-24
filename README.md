@@ -1,91 +1,99 @@
-### 🎉 2022 Update 🎉
+# 📄 EasierPS & EasierSoP
 
-**EasyPS** now has an easier-to-use Python API! Check it out at [PyEasyPS](https://github.com/salfaris/PyEasyPS)!
-
-# :page_facing_up: EasyPS
-
-**EasyPS** is a simple and easy-to-use personal statement LaTeX framework. This solves the problem of messy and duplicated tex files when writing personal statements for multiple universities.
+**EasierPS** & **EasierSoP** are enhanced versions of [EasyPS](https://github.com/salfaris/EasyPS), featuring improved display and extended functionality. This project provides simple and elegant [LaTeX](https://www.latex-project.org/get/) templates for managing Personal Statements (PS) and Statements of Purpose (SoP) across multiple graduate school applications, offering a clean and organized way for handling multiple essays.
 
 ![Screenshot](docs/example.png)
 
 ### Table of contents
-- [Download](#download)
+
+- [Installation](#installation)
 - [Usage](#usage)
-- [Why should I use this?](#why-should-i-use-this)
-- [Warning for users :heavy_exclamation_mark: ](#heavy_exclamation_mark-warning-for-users)
+- [Examples](#examples)
+- [New Features](#new-features)
+- [Known Bugs](#known-bugs)
 
-## Download
-There are two main methods to download the file, choose one only.
+## Installation
 
-1. Download as a ZIP file by clicking the green **Code** button above.
+### Run on Overleaf (Recommended)
 
-2. If you have git installed, just clone the repository.
-   ```zsh
-   git clone https://github.com/salfaris/easy-ps
-   ```
+I have uploaded the templates to [Overleaf](https://www.overleaf.com/)—an online LaTeX editor. You can access them by clicking the link below:
+
+[Open **EasierPS** & **EasierSoP** Template on Overleaf](https://www.overleaf.com/latex/templates/)
+
+### Run Locally
+
+If you are running the LaTeX compilation locally, you should download the `zip` file by either clicking the green **Code** button above, or clone the repository if you have [Git](https://git-scm.com/) installed:
+
+```bash
+git clone https://github.com/DaizeDong/Easier-PS-and-SoP.git
+```
 
 ## Usage
 
- Only 4 steps: open, update settings, write content, compile.
+The project contains two independent templates (**EasierPS** & **EasierSoP**), and you should first select the one you need. The following instructions are for **EasierSoP**, but they are also applicable to **EasierPS**.
 
-1. Go to the `main` directory and open `main.tex` in your favorite LaTeX text editor (mine is Sublime Text).
+1. Go to the `easier_sop` directory and open `main.tex`.
 
 2. Change these variables accordingly:
-   ```tex
-   studentName{insert-your-name}
-   psForUniversity{insert-uni-you-are-applying-to}
-   courseName{insert-your-course-name}
-   showTitle{true/false}
+   ```latex
+   % --- ESSAY DISPLAY SETTINGS ---
+   \SetStudentName{StudentName}           % Your name
+   \SetProgramName{ProgramName}           % Program you're applying for
+   \SetUniversityName{UniversityName}     % University name
+   \SetUniversityAbbr{\GetUniversityName} % University abbreviation (default as the university name if not set)
+   
+   % --- CONTENT INPUT FILES ---
+   \SetBaseContentPath{content/base}      % Name to the input file (base)
+   \SetUniContentPath{content/university} % Name to the input file (university)
    ```
 
-    :heavy_exclamation_mark: There is one caveat for the `psForUniversity` variable; keep reading.
+3. Open the `easier_sop` directory and create the `.tex` files as you inserted in the `SetBaseContentPath` and `SetUniContentPath`. Then write the different parts of your SoP in them accordingly. To reference your papers, just add the according **BibTeX** citations in `easier_sop/ref.bib`.
 
-3. Open the `content` directory and create a new `.tex` file named **exactly equal (word-for-word)** to what you inserted in the `psForUniversity` variable. Then write your personal statement normally in this file.
+   > **❗[Warning]** There is a bug affecting content truncation on the first page. If your PS/SoP exceeds one page, please manually insert the command `\newpage\noindent` in the content to handle the truncation. For reference, you can check the example file `easier_sop/content/example_base.tex`.
 
-    Note the file name **must** be the same word-for-word for otherwise, it will crash at compile time.
+   > **Note:** If you don't want to separate your SoP into two parts, just leave the base `.tex` file empty and write all contents in the university-specific `.tex` file.
 
-4. Build your PDF file as usual.
+   | File              | Content                                                                                 |
+   |-------------------|-----------------------------------------------------------------------------------------|
+   | `BaseContentPath` | The common part of your SoP, such as the research experiences and research interests.   |
+   | `UniContentPath`  | The university-specific part of your SoP, such as the professors you want to work with. |
 
-## Why should I use this?
+4. Build your `.pdf` file as usual.
 
-Using this framework, you can easily add as many personal statements you want and activate/deactivate them by commenting out. For example, suppose this is my current settings in the preamble.
+## Examples
 
-```tex
-\studentName{Sal Faris}
+For reference, I have provided an `example.tex` file for both **EasierPS** and **EasierSoP** (generated by [ChatGPT-4o](https://chatgpt.com/), featuring the fictional character SpongeBob SquarePants). This example demonstrates how the templates work with illustrative content. You can compile these files to view the output and better organize your own file structure.
 
-% Uni of Cambridge
-\psForUniversity{cambridge.tex}
-\courseName{MPhil in Advanced Computer Science}
-\showTitle{true}
+## New Features
 
-%% Imperial College London
-% \psForUniversity{imperial.tex}
-% \courseName{MSc Computing}
-% \showTitle{false}
+- Added support for Statements of Purpose (SoP) in addition to Personal Statements (PS).
+- Adjusted template formats for PS and SoP to meet their specific requirements.
+- Organized the files into a shared `base.tex` and the university-specific `xxx.tex` for better reuse and management.
+- Included detailed annotations for easy understanding and customization.
+- Enhanced the display with improvements in fonts, titles, and references.
+
+## Known Bugs
+
+> **❗[Warning]** This is a known issue with the current template. Please use the workaround to handle truncation (by manually adding `\newpage\noindent`) until the issue is resolved.
+
+Due to the placement of the title within the header on the first page, I encountered some issues that I’ve tried my best but couldn't solve:
+
+- The content on the first page is not truncated when the PS/SoP exceeds one page.
+- The page number in the footer does not appear on the first page.
+
+These issues are caused by the following code (using `easier_sop.cls` as an example):
+
+```latex
+\fancypagestyle{firstpageheader}{
+    ...
+    \fancyhead[C]{
+        \centering {\LARGE \textsc{Statement of Purpose}} \\ [0.35em] % Larger font for the title
+        \makebox[\textwidth][r]{\@UniversityName} \\ % University Name on the right
+        \makebox[\textwidth][l]{\@StudentName \hfill \@ProgramName} % Student Name and Program Name aligned
+        \vspace{-14pt} % Adjust vertical space between elements
+    }
+    ...
+}
 ```
 
-If I make an edit to my PS content for Imperial and want to build again, it is as simple as comment/uncomment code.
-
-```tex
-\studentName{Sal Faris}
-
-%% Uni of Cambridge
-% \psForUniversity{cambridge.tex}
-% \courseName{MPhil in Advanced Computer Science}
-% \showTitle{true}
-
-% Imperial College London
-\psForUniversity{imperial.tex}
-\courseName{MSc Computing}
-\showTitle{false}
-```
-
-## Warning for users :heavy_exclamation_mark:
-1. Directory and file names are sensitive, so changing the names of, for example, `content` and `easyps.cls` may cause a crash.
-   
-2. Do not edit anything after `\begin{document}`; unless you know what you are doing.
-   
-3. Again we emphasize, `psForUniversity` **must** match a `.tex` file in the `content` directory.
-
-
-
+If you have any potential solutions, please feel free to open a pull request and contact me. Thank you!
