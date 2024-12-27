@@ -1,6 +1,6 @@
 # 📄 EasierPS & EasierSoP
 
-**EasierPS** and **EasierSoP** are enhanced versions of [EasyPS](https://github.com/salfaris/EasyPS) with improved display and extended functionality. This project provides simple and elegant LaTeX templates for managing Personal Statements (PS) and Statements of Purpose (SoP) across multiple graduate school applications.
+**EasierPS** & **EasierSoP** are enhanced versions of [EasyPS](https://github.com/salfaris/EasyPS), featuring improved display and extended functionality. This project provides simple and elegant [LaTeX](https://www.latex-project.org/get/) templates for managing Personal Statement (PS) and Statement of Purpose (SoP) across multiple graduate school applications, offering a clean and organized way for handling multiple essays.
 
 ![Screenshot](docs/example.png)
 
@@ -67,7 +67,7 @@ For reference, I have provided an `example.tex` file for both **EasierPS** and *
 
 ## New Features
 
-- Added support for Statements of Purpose (SoP) in addition to Personal Statements (PS).
+- Added support for Statement of Purpose (SoP) in addition to Personal Statement (PS).
 - Adjusted template formats for PS and SoP to meet their specific requirements.
 - Organized the files into a shared `base.tex` and the university-specific `xxx.tex` for better reuse and management.
 - Included detailed annotations for easy understanding and customization.
