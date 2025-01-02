@@ -19,7 +19,7 @@
 
 I have uploaded the templates to [Overleaf](https://www.overleaf.com/)—an online LaTeX editor. You can access them by clicking the link below:
 
-[Open **EasierPS** & **EasierSoP** Template on Overleaf](https://www.overleaf.com/latex/templates/)
+[Open **EasierPS** & **EasierSoP** Template on Overleaf](https://www.overleaf.com/latex/templates/easierps-and-easiersop-personal-statement-and-statement-of-purpose-framework/fnxgsvqgpkgk)
 
 ### Run Locally
 
