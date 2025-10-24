@@ -11,7 +11,6 @@
 \LoadClass[12pt]{article} % Load the base article class with 12pt font size
 \pdfgentounicode=1  % Ensure generated PDF is ATS parsable
 
-\RequirePackage{lipsum}         % Generates placeholder text, remove if unnecessary
 \RequirePackage{geometry}       % For layout and margin control
 \RequirePackage{fancyhdr}       % For headers and footers
 \RequirePackage{setspace}       % For controlling line spacing
