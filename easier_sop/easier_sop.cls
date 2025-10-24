@@ -43,12 +43,7 @@
 \newcommand*{\GetUniContentPath}{\@UniContentPath}
 
 % LAYOUT SETTINGS
-\geometry{
-  a4paper,
-  includehead, includefoot,
-  left=0.6in, right=0.6in, top=0.4in, bottom=0.4in,
-  headheight=60pt, headsep=16pt, footskip=24pt
-}
+\geometry{a4paper, includehead, includefoot, left=0.6in, right=0.6in, top=0.4in, bottom=0.6in} % Include header/footer in layout
 \setlength{\parskip}{0.2em}     % Space between paragraphs
 \linespread{1.06}               % Line spacing
 
@@ -58,20 +53,22 @@
 \fancyhead[L]{\@StudentName}    % Custom left header: Student Name
 \fancyhead[R]{\@UniversityName} % Custom right header: University Name
 \fancyfoot[C]{\thepage}         % Add a page number in the footer
+\setlength{\headheight}{62pt}   % Adjust the height of the header
+\setlength{\headsep}{16pt}      % Space between the header and content
+\setlength{\footskip}{18pt}     % Ensure footer is separated from text
 
 % HEADER EXPANSION FOR FIRST PAGE
 \fancypagestyle{firstpageheader}{
     \fancyhf{} % Clear header and footer for first page
     \fancyhead[C]{%
-      \parbox[t]{\textwidth}{\centering
-        {\LARGE \textsc{Statement of Purpose}}\par\vspace{0.35em}
-        \makebox[\textwidth][r]{\@UniversityName}\par
-        \makebox[\textwidth][l]{\@StudentName \hfill \@ProgramName}%
-      }%
+        \parbox[b][\headheight][b]{\textwidth}{%
+            \centering
+            {\LARGE \textsc{Statement of Purpose}}\\[0.35em]% Title line
+            \makebox[\textwidth][r]{\@UniversityName}\\% University Name on the right
+            \makebox[\textwidth][l]{\@StudentName \hfill \@ProgramName}% Student and Program aligned
+        }%
     }
     \fancyfoot[C]{\thepage}       % Add a page number in the footer
-    \setlength{\headheight}{60pt} % Increased height for the first page header
-    \setlength{\headsep}{16pt}    % Increase space between the header and content
 }
 
 % CITATION SETTINGS
