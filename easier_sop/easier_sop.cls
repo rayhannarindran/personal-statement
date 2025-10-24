@@ -11,7 +11,6 @@
 \LoadClass[12pt]{article} % Load the base article class with 12pt font size
 \pdfgentounicode=1  % Ensure generated PDF is ATS parsable
 
-\RequirePackage{lipsum}         % Generates placeholder text, remove if unnecessary
 \RequirePackage{geometry}       % For layout and margin control
 \RequirePackage{fancyhdr}       % For headers and footers
 \RequirePackage{setspace}       % For controlling line spacing
@@ -44,7 +43,12 @@
 \newcommand*{\GetUniContentPath}{\@UniContentPath}
 
 % LAYOUT SETTINGS
-\geometry{a4paper, includehead, left=0.6in, right=0.6in, top=0.4in, bottom=0.6in} % Page margins, change as you need
+\geometry{
+  a4paper,
+  includehead, includefoot,
+  left=0.6in, right=0.6in, top=0.4in, bottom=0.4in,
+  headheight=60pt, headsep=16pt, footskip=24pt
+}
 \setlength{\parskip}{0.2em}     % Space between paragraphs
 \linespread{1.06}               % Line spacing
 
@@ -54,17 +58,16 @@
 \fancyhead[L]{\@StudentName}    % Custom left header: Student Name
 \fancyhead[R]{\@UniversityName} % Custom right header: University Name
 \fancyfoot[C]{\thepage}         % Add a page number in the footer
-\setlength{\headheight}{20pt}   % Adjust the height of the header
-\setlength{\headsep}{16pt}      % Space between the header and content
 
 % HEADER EXPANSION FOR FIRST PAGE
 \fancypagestyle{firstpageheader}{
     \fancyhf{} % Clear header and footer for first page
-    \fancyhead[C]{
-        \centering {\LARGE \textsc{Statement of Purpose}} \\ [0.35em] % Larger font for the title
-        \makebox[\textwidth][r]{\@UniversityName} \\ % University Name on the right
-        \makebox[\textwidth][l]{\@StudentName \hfill \@ProgramName} % Student Name and Program Name aligned
-        \vspace{-14pt} % Adjust vertical space between elements
+    \fancyhead[C]{%
+      \parbox[t]{\textwidth}{\centering
+        {\LARGE \textsc{Statement of Purpose}}\par\vspace{0.35em}
+        \makebox[\textwidth][r]{\@UniversityName}\par
+        \makebox[\textwidth][l]{\@StudentName \hfill \@ProgramName}%
+      }%
     }
     \fancyfoot[C]{\thepage}       % Add a page number in the footer
     \setlength{\headheight}{60pt} % Increased height for the first page header
